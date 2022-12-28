@@ -1,5 +1,13 @@
 # ~/.ssh/config
 
+# mkdir ~/.ssh/sockets && chmod 700 ~/.ssh/sockets
+# if needed: man ssh_config
+
+Host *
+        ControlMaster auto
+        ControlPath ~/.ssh/sockets/%r@%h-%p
+        ControlPersist 3600
+
 Host github.com
         User git
         Hostname github.com
