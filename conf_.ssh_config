@@ -4,9 +4,11 @@
 # if needed: man ssh_config
 
 Host *
+        IdentitiesOnly yes
         ControlMaster auto
         ControlPath ~/.ssh/sockets/%r@%h-%p
         ControlPersist 3600
+        # ControlPersist yes
 
 Host github.com
         User git
