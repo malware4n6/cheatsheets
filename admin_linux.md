@@ -34,3 +34,34 @@ xrandr --output HDMI-1 --same-as eDP1
 ```
 
 ----
+
+# Quick setup
+
+```bash
+sudo apt install git tmux vim htop tree zsh fonts-powerline terminator python3-pip python3-venv wget curl less more rlwrap
+sudo apt install gcc binutils clang g++ gdb gdb-multiarch gdb-server python3-dev
+sudo apt install wireshark socat netcat openssh-server
+sudo apt install qemu qemu-system-common qemu-system-arm qemu-system-mips
+```
+
+```bash
+python3 -m pip install -U pip
+pip install wheel
+pip install ipython jupyter mkdocs
+pip install pylint black
+pip install pyscaffold
+pip install prettyprint rich
+pip install numpy pandas
+pip install construct
+pip install scapy
+pip install flask
+pip install networkx pyvis
+pip install pefile lief capstone unicorn qiling angr pyew miasm
+pip install libtmux yara-python
+pip install frida frida-tools
+```
+
+## Optional
+
+- rizin/r2
+- [openjdk / jre](https://adoptopenjdk.net/releases.html)

@@ -1,0 +1,23 @@
+# edit aliases
+alias e="vim ~/.bash_aliases; . ~/.bash_aliases"
+alias r=". ~/.bash_aliases"
+
+# python
+function v {
+    mkdir -p $1;
+    cd $1;
+    [[ -e venv ]] || python3 -m venv venv;
+    . venv/bin/activate;
+}
+
+# cd-ls
+function c {
+    cd $1;
+    ls -larth;
+}
+
+# git
+alias gs="git status"
+alias ga="git add"
+alias gd="git diff"
+alias gc="git commit -m"
