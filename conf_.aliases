@@ -4,10 +4,8 @@ alias r=". ~/.bash_aliases"
 
 # python
 function v {
-    mkdir -p $1;
-    cd $1;
-    [[ -e venv ]] || python3 -m venv venv;
-    . venv/bin/activate;
+    [[ -e .venv ]] || python3 -m venv .venv;
+    . .venv/bin/activate;
 }
 
 # cd-ls
