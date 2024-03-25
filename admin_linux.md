@@ -38,10 +38,11 @@ xrandr --output HDMI-1 --same-as eDP1
 # Quick setup
 
 ```bash
-sudo apt install git tmux vim htop tree zsh fonts-powerline terminator python3-pip python3-venv wget curl less more rlwrap
-sudo apt install gcc binutils clang g++ gdb gdb-multiarch gdb-server python3-dev
-sudo apt install wireshark socat netcat openssh-server
-sudo apt install qemu qemu-system-common qemu-system-arm qemu-system-mips
+sudo apt install git tmux vim htop tree zsh fonts-powerline terminator python3-pip python3-venv wget curl less rlwrap
+sudo apt install gcc binutils clang g++ gdb gdb-multiarch gdbserver python3-dev
+sudo apt install wireshark socat netcat-traditional openssh-server
+sudo apt install qemu-user qemu-system-common qemu-system-arm
+sudo apt install qemu-system-mips
 ```
 
 ```bash
