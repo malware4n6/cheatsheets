@@ -24,3 +24,18 @@ set-vm $vmname -EnhancedSessionTranportType HVSocket
 ```
 
 Read [Kali blog](https://www.kali.org/docs/virtualization/install-hyper-v-guest-enhanced-session-mode/) for new options.
+
+# Setup
+
+- Git bash
+- retoolkit
+- wireshark
+- Visual Studio Community
+- Firefox
+- Python3 + pip install *
+- windbg
+- notepad++
+
+- binja
+- ida free
+- hiew

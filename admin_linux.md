@@ -8,6 +8,17 @@
 inode/directory = org.gnome.Nautilus.desktop
 ```
 
+- Crash i3 / Ubuntu
+```sh
+# try to detect problems
+journalctl -b -1 -e
+
+# try to disable some of them caused by flatpack
+systemctl --user stop xdg-desktop-portal{,-gtk}
+systemctl --user disable xdg-desktop-portal{,-gtk}
+```
+
+
 ----
 
 # IP
@@ -40,7 +51,7 @@ xrandr --output HDMI-1 --same-as eDP1
 ```bash
 sudo apt install git tmux vim htop tree zsh fonts-powerline terminator python3-pip python3-venv wget curl less rlwrap
 sudo apt install gcc binutils clang g++ gdb gdb-multiarch gdbserver python3-dev
-sudo apt install wireshark socat netcat-traditional openssh-server
+sudo apt install wireshark socat netcat-traditional openssh-server inetsim
 sudo apt install qemu-user qemu-system-common qemu-system-arm
 sudo apt install qemu-system-mips
 ```
@@ -60,9 +71,30 @@ pip install networkx pyvis
 pip install pefile lief capstone unicorn qiling angr pyew miasm
 pip install libtmux yara-python
 pip install frida frida-tools
+pip install jq
 ```
 
-## Optional
+## Malware analysis
 
+- capa + rules:
+    ```sh
+sudo mkdir /tools
+sudo chown -R $USER:$USER /tools
+cd /tools
+git clone https://github.com/mandiant/capa.git
+git clone https://github.com/mandiant/capa-rules.git
+```
+- binary ninja
+- IDA Free
+- malcat
+- [docker](https://docs.docker.com/engine/install/ubuntu/)
+- [floss](https://github.com/mandiant/flare-floss)
+- [gdb-gef](https://github.com/hugsy/gef)
+- yara + yarac
 - rizin/r2
 - [openjdk / jre](https://adoptopenjdk.net/releases.html)
+
+## Development
+
+- [delta: A syntax-highlighting pager for git, diff, and grep output](https://github.com/dandavison/delta)
+- [batcat](https://github.com/sharkdp/bat)
