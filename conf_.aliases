@@ -2,13 +2,6 @@
 alias e="vim ~/.aliases; . ~/.aliases"
 alias r=". ~/.aliases"
 
-# python
-function v {
-    [[ -e .venv ]] || python3 -m venv .venv;
-    . .venv/bin/activate;
-}
-alias p="python3"
-
 # git
 alias gs="git status"
 alias ga="git add"
@@ -16,6 +9,38 @@ alias gd="git diff"
 alias gc="git commit -m"
 
 # misc
-function c { cd $1; ls -larth; }
-function m { mkdir -p "$1"; cd "$1"; }
+alias lll="lift"
+alias llr="lift -r"
 alias i="ip -c a"
+alias homescreen="xrandr --output DP-1-1-1 --auto --above eDP-1"
+alias b="batcat"
+alias nvim="/tools/nvim.appimage"
+alias nv="/tools/nvim.appimage"
+function c { cd $1; ls -larth; }
+function m { mkdir -p "$1"; cd "$1" }
+function old { cp -r "$1" "$1_`date +%Y%m%d_%H%M%S`.old"}
+
+# python
+function v {
+    [[ -e .venv ]] || python3 -m venv .venv;
+    . .venv/bin/activate;
+}
+alias p="python3"
+
+# re
+alias capa="capa -r /tools/capa-rules"
+alias hiew="docker run -it --rm --net none -v .:/work hiew"
+
+# rust
+alias crr='cargo run --release'
+alias cbr='cargo build --release'
+alias cr='cargo run'
+alias cb='cargo build'
+alias ct='clear;cargo test'
+function rustdoc {
+        cd ~/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/share/doc/rust/html && python3 -m http.server
+}
+
+# android studio
+alias studio="/tools/android-studio/bin/studio.sh"
+
