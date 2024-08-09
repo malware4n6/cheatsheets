@@ -1,3 +1,5 @@
 .venv
 __pycache__
 *.py[codw]
+ansible/inventory
+ansible/sites/prod_static_sites.cfg

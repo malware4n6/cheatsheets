@@ -1,0 +1,64 @@
+---
+- hosts: webservers
+  tasks:
+    - name: Upgrade system
+      apt: upgrade=dist update_cache=yes
+      become: yes
+    - name: ensure nginx is at the latest version
+      apt: name=nginx state=latest
+      become: yes
+    - name: install snapd
+      apt: name=snapd state=latest
+      become: yes
+    - name: create letsencrypt directory
+      file: name=/var/www/letsencrypt state=directory
+      become: yes
+    - name: start nginx
+      service:
+        name: nginx
+        state: started
+    - name: hide nginx version
+      # sed -i 's/# server_tokens off;/server_tokens off;/' /etc/nginx/nginx.conf
+      ansible.builtin.replace:
+        path: /etc/nginx/nginx.conf
+        regexp: "# server_tokens off;"
+        replace: "server_tokens off;"
+        backup: true
+      become: yes
+    - name: start nginx
+      service:
+        name: nginx
+        state: started
+      become: yes
+    - name: copy the nginx config file
+      copy:
+        src: "{{ playbook_dir }}/../sites/static_sites.cfg"
+        dest: /etc/nginx/sites-available/static_sites.cfg
+      become: yes
+    - name: create symlink
+      file:
+        src: /etc/nginx/sites-available/static_sites.cfg
+        dest: /etc/nginx/sites-enabled/default
+        state: link
+      become: yes
+    - name: Creates site_80 directory
+      file: path=/var/www/site_80 state=directory
+      become: yes
+    - name: Creates site_443 directory
+      file: name=/var/www/site_443 state=directory
+      become: yes
+    - name: copy the content of the HTTP web site
+      copy:
+        src: "{{ playbook_dir }}/../sites/site_80/src/"
+        dest: /var/www/site_80
+      become: yes
+    - name: copy the content of the HTTPS web site
+      copy:
+        src: "{{ playbook_dir }}/../sites/site_443/src/"
+        dest: /var/www/site_443
+      become: yes
+    - name: restart nginx
+      service:
+        name: nginx
+        state: restarted
+      become: yes
