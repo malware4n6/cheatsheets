@@ -46,6 +46,16 @@ xrandr --output HDMI-1 --same-as eDP1
 
 ----
 
+# ssh
+
+```sh
+ssh-keygen -t ed25519 -C "your_email@example.com" -f keyfile
+```
+
+SSH config: [.ssh/config](conf_.ssh_config)
+
+----
+
 # Quick setup
 
 ```bash
