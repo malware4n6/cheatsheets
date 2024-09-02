@@ -7,6 +7,9 @@
     - name: ensure nginx is at the latest version
       apt: name=nginx state=latest
       become: yes
+    - name: install nginx-extras
+      apt: name=nginx-extras state=latest
+      become: yes
     - name: install snapd
       apt: name=snapd state=latest
       become: yes
@@ -19,10 +22,11 @@
         state: started
     - name: hide nginx version
       # sed -i 's/# server_tokens off;/server_tokens off;/' /etc/nginx/nginx.conf
+      # add "more_clear_headers Server;" after that line will strip the HTTP header 'Server: nginx'
       ansible.builtin.replace:
         path: /etc/nginx/nginx.conf
         regexp: "# server_tokens off;"
-        replace: "server_tokens off;"
+        replace: "server_tokens off;\n\tmore_clear_headers Server;"
         backup: true
       become: yes
     - name: start nginx
